@@ -8,6 +8,7 @@ class ForecastFacade
     def retrieve_weather(address)
       lat_lng = coordinates(address)
       weather = OpenWeatherService.get_weather(lat_lng.lat, lat_lng.lng)
+      Weather.new(weather)
     end
   end
 end
