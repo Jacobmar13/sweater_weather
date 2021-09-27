@@ -1,9 +1,9 @@
 class Books
   attr_reader :id,
-  :destination,
-  :forecast,
-  :total_books_found,
-  :books
+    :destination,
+    :forecast,
+    :total_books_found,
+    :books
 
   def initialize(location, books, quantity)
     @id = nil
