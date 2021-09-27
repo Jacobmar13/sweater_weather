@@ -7,7 +7,7 @@ class ForecastFacade
 
     def retrieve_weather(address)
       lat_lng = coordinates(address)
-      require 'pry';binding.pry
+      weather = OpenWeatherService.get_weather(lat_lng.lat, lat_lng.lng)
     end
   end
 end
