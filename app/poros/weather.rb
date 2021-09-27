@@ -29,7 +29,7 @@ class Weather
   def daily(daily)
     daily.map do |day|
       {
-        date: Time.at(day[:dt]),
+        date: Time.at(day[:dt]).strftime("%F"),
         sunrise: Time.at(day[:sunrise]),
         sunset: Time.at(day[:sunset]),
         max_temp: day[:temp][:max],
@@ -43,7 +43,7 @@ class Weather
   def hourly(hourly)
     hourly.map do |hour|
       {
-        time: Time.at(hour[:dt]),
+        time: Time.at(hour[:dt]).strftime("%T"),
         temperature: hour[:temp],
         conditions: hour[:weather][0][:description],
         icon: hour[:weather][0][:icon]
