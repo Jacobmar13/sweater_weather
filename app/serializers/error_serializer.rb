@@ -10,7 +10,7 @@ class ErrorSerializer
       }
     end
 
-    def credentials_json(messages)
+    def credentials_json
       {
         errors: {
           status: "Not Valid",
