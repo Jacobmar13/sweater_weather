@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'forecasts' do
+describe 'forecasts', :vcr do
   describe 'get request' do
     it 'can return weather forecast for a given location' do
       location = "denver,co"

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe MapquestService do
+RSpec.describe MapquestService, :vcr do
   it 'returns a list latitude and longitude' do
     response = MapquestService.get_location('denver,co')
     expect(response).to be_a(Hash)
