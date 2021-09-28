@@ -1,8 +1,8 @@
 class Weather
   attr_reader :id,
-              :current_weather,
-              :daily_weather,
-              :hourly_weather
+    :current_weather,
+    :daily_weather,
+    :hourly_weather
 
   def initialize(weather)
     @current_weather = current(weather[:current])
