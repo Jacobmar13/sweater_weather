@@ -34,5 +34,34 @@ describe 'users' do
       expect(user[:attributes]).to_not have_key(:password)
       expect(user[:attributes]).to_not have_key(:password_digest)
     end
+    it 'gives an error message if password and confirmation do not match' do
+      user_params = {
+        email: "whatever@example.com",
+        password: "password",
+        password_confirmation: "password1234"
+      }
+
+      headers = { "CONTENT_TYPE" => "application/json" }
+
+      post "/api/v1/users", headers: headers, params: JSON.generate(user_params)
+
+      expect(response.status).to eq(400)
+    end
+
+    it 'gives an error message if user already exists' do
+      User.create(email: "whatever@example.com", password: "password")
+
+      user_params = {
+        email: "whatever@example.com",
+        password: "password",
+        password_confirmation: "password1234"
+      }
+
+      headers = { "CONTENT_TYPE" => "application/json" }
+
+      post "/api/v1/users", headers: headers, params: JSON.generate(user_params)
+
+      expect(response.status).to eq(400)
+    end
   end
 end
