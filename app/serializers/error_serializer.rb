@@ -1,11 +1,23 @@
 class ErrorSerializer
-  def self.error_json(messages)
-    {
-      errors: {
-        status: "Not Valid",
-        message: messages,
-        code: 400
+  class << self
+    def error_json(messages)
+      {
+        errors: {
+          status: "Not Valid",
+          message: messages,
+          code: 400
+        }
       }
-    }
+    end
+
+    def credentials_json(messages)
+      {
+        errors: {
+          status: "Not Valid",
+          message: "Credentials are bad",
+          code: 400
+        }
+      }
+    end
   end
 end
