@@ -46,6 +46,15 @@ describe 'users' do
       post "/api/v1/users", headers: headers, params: JSON.generate(user_params)
 
       expect(response.status).to eq(400)
+
+      error = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error).to have_key(:errors)
+      expect(error[:errors]).to have_key(:status)
+      expect(error[:errors][:status]).to eq("Not Valid")
+      expect(error[:errors]).to have_key(:message)
+      expect(error[:errors]).to have_key(:code)
+      expect(error[:errors][:code]).to eq(400)
     end
 
     it 'gives an error message if user already exists' do
@@ -62,6 +71,15 @@ describe 'users' do
       post "/api/v1/users", headers: headers, params: JSON.generate(user_params)
 
       expect(response.status).to eq(400)
+
+      error = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error).to have_key(:errors)
+      expect(error[:errors]).to have_key(:status)
+      expect(error[:errors][:status]).to eq("Not Valid")
+      expect(error[:errors]).to have_key(:message)
+      expect(error[:errors]).to have_key(:code)
+      expect(error[:errors][:code]).to eq(400)
     end
   end
 end
