@@ -7,7 +7,7 @@ class Weather
   def initialize(weather)
     @current_weather = current(weather[:current])
     @daily_weather = daily(weather[:daily])
-    @hourly_weather = hourly(weather[:hourly])
+    @hourly_weather = hourly(weather[:hourly], 8)
     @id = nil
   end
 
@@ -40,7 +40,7 @@ class Weather
     end.first(5)
   end
 
-  def hourly(hourly)
+  def hourly(hourly, hours = 48)
     hourly.map do |hour|
       {
         time: Time.at(hour[:dt]).strftime("%T"),
@@ -48,6 +48,15 @@ class Weather
         conditions: hour[:weather][0][:description],
         icon: hour[:weather][0][:icon]
       }
-    end.first(8)
+    end.first(hours)
+  end
+
+  def self.destination_forecast(weather, travel_time)
+    forecast = new(weather).hourly(weather[:hourly])[(travel_time / 3600)]
+
+    {
+      conditions: forecast[:conditions],
+      temperature: forecast[:temperature]
+    }
   end
 end
