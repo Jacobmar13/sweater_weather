@@ -17,8 +17,8 @@ class RoadTrip
     if time == "Impossible"
       time
     else
-      hour = (time / 3600).to_s.rjust(2,'0')
-      minute = (time / 60 % 60).to_s.rjust(2,'0')
+      hour = (time / 3600).to_s.rjust(2, "0")
+      minute = (time / 60 % 60).to_s.rjust(2, "0")
       "#{hour}h#{minute}m"
     end
   end
