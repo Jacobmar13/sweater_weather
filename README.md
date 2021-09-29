@@ -13,6 +13,7 @@
 
 - [Overview](#overview)
 - [Tools Utilized](#framework)
+- [Endpoints](#endpoints)
 - [Setup and Things to Note](#project-configuration)
 
 ## Overview
