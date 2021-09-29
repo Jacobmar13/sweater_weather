@@ -7,7 +7,11 @@ class RoadTripFacade
 
     def destination_time(trip_params)
       travel_time = MapquestService.get_travel_time(trip_params)
-      travel_time[:route][:time]
+      if travel_time[:route][:time]
+        travel_time[:route][:time]
+      else
+        "Impossible"
+      end
     end
 
     def retrieve_trip_forecast(trip_params)
