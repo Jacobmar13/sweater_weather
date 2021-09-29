@@ -52,11 +52,14 @@ class Weather
   end
 
   def self.destination_forecast(weather, travel_time)
-    forecast = new(weather).hourly(weather[:hourly])[(travel_time / 3600)]
-
-    {
-      conditions: forecast[:conditions],
-      temperature: forecast[:temperature]
-    }
+    if travel_time == "Impossible"
+      {}
+    else
+      forecast = new(weather).hourly(weather[:hourly])[(travel_time / 3600)]
+      {
+        conditions: forecast[:conditions],
+        temperature: forecast[:temperature]
+      }
+    end
   end
 end
