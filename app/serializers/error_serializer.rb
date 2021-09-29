@@ -19,5 +19,15 @@ class ErrorSerializer
         }
       }
     end
+
+    def unauthorized_json
+      {
+        errors: {
+          status: "Not Authorized",
+          message: "Api Key is not valid/missing",
+          code: 401
+        }
+      }
+    end
   end
 end
