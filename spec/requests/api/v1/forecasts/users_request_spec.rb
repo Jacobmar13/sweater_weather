@@ -14,6 +14,7 @@ describe 'users' do
       post "/api/v1/users", headers: headers, params: JSON.generate(user_params)
 
       expect(response).to be_successful
+      expect(response.status).to eq(201)
 
       user = JSON.parse(response.body, symbolize_names: true)[:data]
       user_object = User.last
